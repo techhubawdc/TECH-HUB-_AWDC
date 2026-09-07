@@ -189,8 +189,8 @@ button{font:inherit}
 <!-- 8. READY + 3,2,1 -->
 <div class="screen hidden" id="readyScreen">
   <div class="label">TECH HUB LAUNCH</div>
-  <div class="readyText">ARE YOU READY TO LAUNCH LOGO?</div>
-  <button class="enterBtn readyEnter" onclick="startLogoCountdown()">ENTER</button>
+  <div class="readyText">ARE YOU READY TO LAUNCH OUR LOGO?</div>
+  <button class="enterBtn readyEnter" onclick="startLogoLaunch()">ENTER</button>
 </div>
 <div class="screen hidden" id="logoCountdown">
   <div class="label">FINAL LAUNCH SEQUENCE</div>
@@ -371,6 +371,38 @@ function revealLogoVideo(){
     document.getElementById("finalBrand").classList.add("show");
   };
 }
+
+function startLogoLaunch(){
+  show("logoCountdown");
+
+  const el = document.getElementById("logoCountNumber");
+  let n = 3;
+  el.textContent = n;
+  el.style.animation = "none";
+  void el.offsetWidth;
+  el.style.animation = "pulse 1s ease";
+  soundBeep();
+
+  const timer = setInterval(()=>{
+    n--;
+    if(n > 0){
+      el.textContent = n;
+      el.style.animation = "none";
+      void el.offsetWidth;
+      el.style.animation = "pulse 1s ease";
+      soundBeep();
+    } else {
+      clearInterval(timer);
+      const video = document.getElementById("logoVideoEl");
+      show("logoVideo");
+      if(video){
+        video.currentTime = 0;
+        video.play().catch(()=>{});
+      }
+    }
+  }, 1000);
+}
+
 </script>
 </body>
 </html>
