@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>TECH HUB — Grand Launch</title>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#02040a;color:#fff;font-family:Arial,Helvetica,sans-serif}
@@ -31,7 +32,8 @@ button{font:inherit}
 .loadingText{margin-top:20px;color:#8eaabd;letter-spacing:3px;font-size:clamp(12px,1.5vw,21px)}
 .dots{margin-top:30px;display:flex;gap:12px}
 .dot{width:12px;height:12px;border-radius:50%;background:#63eaff;box-shadow:0 0 15px #00d9ff;animation:dotPulse 1s infinite}
-.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
 @keyframes dotPulse{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
 .errorText{color:#ff6975;font-size:clamp(42px,7vw,110px);font-weight:900;letter-spacing:7px;text-shadow:0 0 30px rgba(255,50,70,.6);animation:errorAppear .7s ease}
 @keyframes errorAppear{0%{opacity:0;transform:scale(1.2)}60%{opacity:1;transform:scale(.98)}100%{transform:scale(1)}}
@@ -68,7 +70,20 @@ button{font:inherit}
 .fullVideoScreen{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .fullVideoScreen video{width:100%;height:100%;object-fit:contain;background:#000}
 .videoOverlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;background:radial-gradient(circle,rgba(0,210,255,.08),transparent 60%)}
-.readyEnter{margin-top:32px;}\n\n.readyText{font-size:clamp(34px,7vw,105px);font-weight:900;letter-spacing:5px;text-shadow:0 0 25px #00d9ff,0 0 70px #0077ff;animation:readyIn 1s ease forwards}
+
+/* CHANGED ONLY: BIG LOGO READY TEXT */
+.readyEnter{margin-top:45px}
+.readyText{
+  font-size:clamp(50px,8vw,125px);
+  font-weight:1000;
+  letter-spacing:6px;
+  line-height:1.1;
+  max-width:92%;
+  text-align:center;
+  text-shadow:0 0 25px #00d9ff,0 0 70px #0077ff,0 0 120px #7c00ff;
+  animation:readyIn 1s ease forwards
+}
+
 @keyframes readyIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
 .logoVideoScreen{position:fixed;inset:0;z-index:130;background:#000;display:flex;align-items:center;justify-content:center}
 .logoVideoScreen video{width:100%;height:100%;object-fit:contain}
@@ -88,9 +103,13 @@ button{font:inherit}
 @media(min-width:601px){#rotateHint{display:none!important}}
 </style>
 </head>
+
 <body>
 <div id="app">
-<div class="grid"></div><div class="particles" id="particles"></div><div class="energy" id="energy"></div>
+
+<div class="grid"></div>
+<div class="particles" id="particles"></div>
+<div class="energy" id="energy"></div>
 
 <!-- 1. OPENING -->
 <div class="screen" id="intro">
@@ -114,13 +133,22 @@ button{font:inherit}
   <div class="subtitle">PLEASE ENTER TO MOVE ON</div>
   <button class="enterBtn" onclick="presidentEnter()">ENTER</button>
 </div>
+
 <div class="screen hidden loadingScreen" id="presidentLoading">
-  <div class="label">SECURITY PROTOCOL</div><div class="loadingTitle">AUTHENTICATING...</div>
+  <div class="label">SECURITY PROTOCOL</div>
+  <div class="loadingTitle">AUTHENTICATING...</div>
   <div class="loadingText">VERIFYING PRESIDENT AUTHORIZATION</div>
-  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 </div>
+
 <div class="screen hidden" id="error1">
-  <div class="errorText">ERROR</div><div class="errorSmall">AUTHORIZATION FAILED</div><div class="errorSmall">PRESIDENT ACCESS DENIED</div>
+  <div class="errorText">ERROR</div>
+  <div class="errorSmall">AUTHORIZATION FAILED</div>
+  <div class="errorSmall">PRESIDENT ACCESS DENIED</div>
 </div>
 
 <!-- 4. ASSOCIATE PRESIDENT -->
@@ -130,16 +158,25 @@ button{font:inherit}
   <div class="subtitle">PLEASE ENTER TO MOVE ON</div>
   <button class="enterBtn" onclick="associateEnter()">ENTER</button>
 </div>
+
 <div class="screen hidden loadingScreen" id="associateLoading">
-  <div class="label">SECURITY PROTOCOL</div><div class="loadingTitle">AUTHENTICATING...</div>
+  <div class="label">SECURITY PROTOCOL</div>
+  <div class="loadingTitle">AUTHENTICATING...</div>
   <div class="loadingText">VERIFYING ASSOCIATE PRESIDENT AUTHORIZATION</div>
-  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-</div>
-<div class="screen hidden" id="error2">
-  <div class="errorText">ERROR</div><div class="errorSmall">AUTHORIZATION FAILED</div><div class="errorSmall">ASSOCIATE PRESIDENT ACCESS DENIED</div>
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 </div>
 
-<!-- 5. CHAIRMAN SUSPENSE — EXACT SEQUENCE -->
+<div class="screen hidden" id="error2">
+  <div class="errorText">ERROR</div>
+  <div class="errorSmall">AUTHORIZATION FAILED</div>
+  <div class="errorSmall">ASSOCIATE PRESIDENT ACCESS DENIED</div>
+</div>
+
+<!-- 5. CHAIRMAN SUSPENSE -->
 <div class="screen hidden" id="chairmanSuspense">
   <div class="suspenseText s1" id="st1">EVERYTHING IS READY...</div>
   <div class="suspenseText s2" id="st2">THE STAGE IS SET...</div>
@@ -160,11 +197,18 @@ button{font:inherit}
   <div class="chairmanSub">THE STAGE AWAITS YOU.</div>
   <button class="enterBtn" onclick="chairmanEnter()">ENTER</button>
 </div>
+
 <div class="screen hidden loadingScreen" id="chairmanLoading">
-  <div class="label">PRIORITY AUTHORIZATION</div><div class="loadingTitle">AUTHENTICATING...</div>
+  <div class="label">PRIORITY AUTHORIZATION</div>
+  <div class="loadingTitle">AUTHENTICATING...</div>
   <div class="loadingText">VERIFYING CHAIRMAN AUTHORIZATION</div>
-  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 </div>
+
 <div class="screen hidden" id="success">
   <div class="title" style="color:#5cffae;text-shadow:0 0 20px #00ff91">ACCESS GRANTED</div>
   <div class="subtitle">CHAIRMAN AUTHORIZATION SUCCESSFUL</div>
@@ -177,7 +221,9 @@ button{font:inherit}
   <div class="countNumber" id="launchCountNumber">10</div>
 </div>
 
-<div id="letsGo"><div class="letsGoText">LET'S GO</div></div>
+<div id="letsGo">
+  <div class="letsGoText">LET'S GO</div>
+</div>
 
 <!-- 7. BANNER VIDEO -->
 <div class="fullVideoScreen hidden" id="bannerVideoScreen">
@@ -189,9 +235,10 @@ button{font:inherit}
 <!-- 8. READY + 3,2,1 -->
 <div class="screen hidden" id="readyScreen">
   <div class="label">TECH HUB LAUNCH</div>
-  <div class="readyText">ARE YOU READY TO LAUNCH OUR LOGO?</div>
+  <div class="readyText">ARE YOU READY FOR LOGO LAUNCH?</div>
   <button class="enterBtn readyEnter" onclick="startLogoLaunch()">ENTER</button>
 </div>
+
 <div class="screen hidden" id="logoCountdown">
   <div class="label">FINAL LAUNCH SEQUENCE</div>
   <div class="countNumber" id="countNumber">3</div>
@@ -209,34 +256,124 @@ button{font:inherit}
   <div class="brandSub">LEARN • BUILD • INNOVATE</div>
 </div>
 
-<div id="rotateHint"><div class="rotateBox"><div class="phone">📱</div><h2>PLEASE ROTATE YOUR PHONE</h2><p>For the full cinematic TECH HUB launch, view this presentation in landscape mode.</p></div></div>
+<div id="rotateHint">
+  <div class="rotateBox">
+    <div class="phone">📱</div>
+    <h2>PLEASE ROTATE YOUR PHONE</h2>
+    <p>For the full cinematic TECH HUB launch, view this presentation in landscape mode.</p>
+  </div>
+</div>
+
 </div>
 
 <script>
 let audioCtx=null;
-function unlockAudio(){try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume()}catch(e){}}
+
+function unlockAudio(){
+  try{
+    if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==="suspended")audioCtx.resume()
+  }catch(e){}
+}
+
 function tone(freq,duration,type="sine",volume=.06,delay=0){
   if(!audioCtx)return;
-  const t=audioCtx.currentTime+delay,o=audioCtx.createOscillator(),g=audioCtx.createGain();
-  o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(volume,t+.01);g.gain.exponentialRampToValueAtTime(.001,t+duration);
-  o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+duration+.03)
+  const t=audioCtx.currentTime+delay,
+        o=audioCtx.createOscillator(),
+        g=audioCtx.createGain();
+
+  o.type=type;
+  o.frequency.setValueAtTime(freq,t);
+  g.gain.setValueAtTime(0,t);
+  g.gain.linearRampToValueAtTime(volume,t+.01);
+  g.gain.exponentialRampToValueAtTime(.001,t+duration);
+  o.connect(g);
+  g.connect(audioCtx.destination);
+  o.start(t);
+  o.stop(t+duration+.03)
 }
-function soundScan(){unlockAudio();tone(620,.08,"square",.05);tone(880,.08,"square",.04,.09)}
-function soundError(){unlockAudio();tone(150,.12,"sawtooth",.07);tone(95,.28,"sawtooth",.06,.12)}
-function soundSuccess(){unlockAudio();tone(520,.12,"sine",.06);tone(780,.16,"sine",.06,.12);tone(1040,.28,"sine",.07,.27)}
-function soundBeep(){unlockAudio();tone(880,.16,"square",.045)}
-function soundLetsGo(){unlockAudio();tone(220,.12,"sawtooth",.05);tone(440,.12,"sawtooth",.06,.1);tone(880,.4,"sawtooth",.07,.2)}
-function heartbeat(strong=false){unlockAudio();const v=strong?.085:.045;tone(70,.10,"sine",v);tone(55,.12,"sine",v,.14)}
-function soundGlitch(){unlockAudio();tone(180,.06,"square",.035);tone(70,.09,"sawtooth",.025,.07)}
+
+function soundScan(){
+  unlockAudio();
+  tone(620,.08,"square",.05);
+  tone(880,.08,"square",.04,.09)
+}
+
+function soundError(){
+  unlockAudio();
+  tone(150,.12,"sawtooth",.07);
+  tone(95,.28,"sawtooth",.06,.12)
+}
+
+function soundSuccess(){
+  unlockAudio();
+  tone(520,.12,"sine",.06);
+  tone(780,.16,"sine",.06,.12);
+  tone(1040,.28,"sine",.07,.27)
+}
+
+function soundBeep(){
+  unlockAudio();
+  tone(880,.16,"square",.045)
+}
+
+function soundLetsGo(){
+  unlockAudio();
+  tone(220,.12,"sawtooth",.05);
+  tone(440,.12,"sawtooth",.06,.1);
+  tone(880,.4,"sawtooth",.07,.2)
+}
+
+function heartbeat(strong=false){
+  unlockAudio();
+  const v=strong?.085:.045;
+  tone(70,.10,"sine",v);
+  tone(55,.12,"sine",v,.14)
+}
+
+function soundGlitch(){
+  unlockAudio();
+  tone(180,.06,"square",.035);
+  tone(70,.09,"sawtooth",.025,.07)
+}
 
 const particles=document.getElementById("particles");
-for(let i=0;i<90;i++){const p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*5+"s";p.style.animationDuration=3+Math.random()*6+"s";particles.appendChild(p)}
 
-const screens=["intro","install","presidentPrompt","presidentLoading","error1","associatePrompt","associateLoading","error2","chairmanSuspense","chairman","chairmanLoading","success","launchCountdown","readyScreen","logoCountdown"];
-function hideAll(){screens.forEach(id=>document.getElementById(id)?.classList.add("hidden"))}
+for(let i=0;i<90;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDelay=Math.random()*5+"s";
+  p.style.animationDuration=3+Math.random()*6+"s";
+  particles.appendChild(p)
+}
 
-function show(id){hideAll();document.getElementById(id).classList.remove("hidden")}
+const screens=[
+  "intro",
+  "install",
+  "presidentPrompt",
+  "presidentLoading",
+  "error1",
+  "associatePrompt",
+  "associateLoading",
+  "error2",
+  "chairmanSuspense",
+  "chairman",
+  "chairmanLoading",
+  "success",
+  "launchCountdown",
+  "readyScreen",
+  "logoCountdown"
+];
+
+function hideAll(){
+  screens.forEach(id=>document.getElementById(id)?.classList.add("hidden"))
+}
+
+function show(id){
+  hideAll();
+  document.getElementById(id).classList.remove("hidden")
+}
 
 /* OPENING -> INSTALLATION */
 setTimeout(()=>show("install"),2800);
@@ -244,47 +381,69 @@ setTimeout(()=>show("presidentPrompt"),6500);
 
 /* PRESIDENT */
 function presidentEnter(){
-  unlockAudio();soundScan();show("presidentLoading");
-  setTimeout(()=>{show("error1");soundError()},3000);
+  unlockAudio();
+  soundScan();
+  show("presidentLoading");
+
+  setTimeout(()=>{
+    show("error1");
+    soundError()
+  },3000);
+
   setTimeout(()=>show("associatePrompt"),5500);
 }
 
 /* ASSOCIATE */
 function associateEnter(){
-  unlockAudio();soundScan();show("associateLoading");
-  setTimeout(()=>{show("error2");soundError()},3000);
+  unlockAudio();
+  soundScan();
+  show("associateLoading");
+
+  setTimeout(()=>{
+    show("error2");
+    soundError()
+  },3000);
+
   setTimeout(startChairmanSuspense,5500);
 }
 
 /* CHAIRMAN SUSPENSE */
-function showText(id){const e=document.getElementById(id);e.classList.remove("show");void e.offsetWidth;e.classList.add("show")}
+function showText(id){
+  const e=document.getElementById(id);
+  e.classList.remove("show");
+  void e.offsetWidth;
+  e.classList.add("show")
+}
+
 function startChairmanSuspense(){
   show("chairmanSuspense");
-  showText("st1");                         // EVERYTHING IS READY...
-  setTimeout(()=>showText("st2"),2600);    // THE STAGE IS SET...
-  setTimeout(()=>showText("st3"),5200);    // THE MOMENT IS HERE...
-  setTimeout(()=>showText("st4"),7800);    // BUT SOMETHING...
-  setTimeout(()=>{heartbeat(false);},10600);
-  setTimeout(()=>showText("st5"),11000);   // THE FINAL STEP...
-  setTimeout(()=>showText("st6"),13500);   // AWAITS ITS KEY.
-  setTimeout(()=>{heartbeat(true);showText("st7")},16000); // WHO HOLDS THE KEY?
-  setTimeout(()=>showText("st8"),19000);   // THE ONE WHO...
-  setTimeout(()=>{soundGlitch();showText("st9")},22500); // CHAIRMAN SIR...
-  setTimeout(()=>showText("st10"),25000);  // THE STAGE AWAITS YOU.
+
+  showText("st1");
+
+  setTimeout(()=>showText("st2"),2600);
+  setTimeout(()=>showText("st3"),5200);
+  setTimeout(()=>showText("st4"),7800);
+  setTimeout(()=>{heartbeat(false)},10600);
+  setTimeout(()=>showText("st5"),11000);
+  setTimeout(()=>showText("st6"),13500);
+  setTimeout(()=>{heartbeat(true);showText("st7")},16000);
+  setTimeout(()=>showText("st8"),19000);
+  setTimeout(()=>{soundGlitch();showText("st9")},22500);
+  setTimeout(()=>showText("st10"),25000);
   setTimeout(()=>show("chairman"),28000);
 }
 
 /* CHAIRMAN AUTHORIZATION */
 function chairmanEnter(){
-  unlockAudio();soundScan();show("chairmanLoading");
+  unlockAudio();
+  soundScan();
+  show("chairmanLoading");
 
-  // Chairman authorization completes first.
   setTimeout(()=>{
     show("success");
     soundSuccess();
 
-    // Then the full 10 → 1 launch countdown.
-    setTimeout(startLaunchCountdown, 2000);
+    setTimeout(startLaunchCountdown,2000);
   },3000);
 }
 
@@ -320,87 +479,109 @@ function startLaunchCountdown(){
 /* LET'S GO -> BANNER VIDEO */
 function showLetsGo(){
   hideAll();
-  const lg=document.getElementById("letsGo"),energy=document.getElementById("energy");
-  lg.classList.remove("show");void lg.offsetWidth;lg.classList.add("show");
-  energy.classList.remove("active");void energy.offsetWidth;energy.classList.add("active");
+
+  const lg=document.getElementById("letsGo"),
+        energy=document.getElementById("energy");
+
+  lg.classList.remove("show");
+  void lg.offsetWidth;
+  lg.classList.add("show");
+
+  energy.classList.remove("active");
+  void energy.offsetWidth;
+  energy.classList.add("active");
+
   soundLetsGo();
+
   setTimeout(startBannerVideo,1450);
 }
 
 function startBannerVideo(){
-  const wrap=document.getElementById("bannerVideoScreen"),v=document.getElementById("bannerVideo");
+  const wrap=document.getElementById("bannerVideoScreen"),
+        v=document.getElementById("bannerVideo");
+
   wrap.classList.remove("hidden");
   v.currentTime=0;
+
   const play=v.play();
   if(play)play.catch(()=>{});
+
   v.onended=()=>{
     wrap.classList.add("hidden");
+
+    /* SHOW READY SCREEN ONLY */
     startReadySequence();
   };
 }
 
-/* READY -> 3,2,1 */
+/* READY SCREEN — WAIT FOR ENTER */
 function startReadySequence(){
   show("readyScreen");
-  setTimeout(()=>{
-    show("logoCountdown");
-    let n=3;const el=document.getElementById("countNumber");el.textContent=n;soundBeep();
-    const timer=setInterval(()=>{
-      n--;
-      if(n>0){
-        el.textContent=n;el.style.animation="none";void el.offsetWidth;el.style.animation="pulse 1s ease";
-        soundBeep();
-        if(n===2)heartbeat(true);
-      }else{
-        clearInterval(timer);revealLogoVideo();
+}
+
+/* ENTER CLICK -> 3,2,1 -> LOGO VIDEO */
+function startLogoLaunch(){
+
+  show("logoCountdown");
+
+  const el=document.getElementById("countNumber");
+  let n=3;
+
+  el.textContent=n;
+  el.style.animation="none";
+  void el.offsetWidth;
+  el.style.animation="pulse 1s ease";
+
+  soundBeep();
+
+  const timer=setInterval(()=>{
+
+    n--;
+
+    if(n>0){
+
+      el.textContent=n;
+
+      el.style.animation="none";
+      void el.offsetWidth;
+      el.style.animation="pulse 1s ease";
+
+      soundBeep();
+
+      if(n===2){
+        heartbeat(true);
       }
-    },1000);
-  },3000);
+
+    }else{
+
+      clearInterval(timer);
+
+      revealLogoVideo();
+
+    }
+
+  },1000);
 }
 
 /* LOGO VIDEO */
 function revealLogoVideo(){
+
   hideAll();
-  const wrap=document.getElementById("logoVideoScreen"),v=document.getElementById("logoVideo");
+
+  const wrap=document.getElementById("logoVideoScreen"),
+        v=document.getElementById("logoVideo");
+
   wrap.classList.remove("hidden");
+
   v.currentTime=0;
+
   const play=v.play();
   if(play)play.catch(()=>{});
+
   v.onended=()=>{
     wrap.classList.add("hidden");
     document.getElementById("finalBrand").classList.add("show");
   };
-}
-
-function startLogoLaunch(){
-  show("logoCountdown");
-
-  const el = document.getElementById("logoCountNumber");
-  let n = 3;
-  el.textContent = n;
-  el.style.animation = "none";
-  void el.offsetWidth;
-  el.style.animation = "pulse 1s ease";
-  soundBeep();
-
-  const timer = setInterval(()=>{
-    n--;
-    if(n > 0){
-      el.textContent = n;
-      el.style.animation = "none";
-      void el.offsetWidth;
-      el.style.animation = "pulse 1s ease";
-      soundBeep();
-    } else {
-      clearInterval(timer);
-      const video = document.getElementById("logoVideoEl");
-      show("logoVideo");
-      if(video){
-        video.currentTime = 0;
-        video.play().catch(()=>{});
-      }
-    }
-  }, 1000);
 }
 
 </script>
